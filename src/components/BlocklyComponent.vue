@@ -29,11 +29,11 @@ if (window.location.pathname == "/r/ge") {
 else if (window.location.pathname == "/r/cw") {
     renderer = "cwest"
 }*/
-import { Backpack } from "@blockly/workspace-backpack";
+//import { Backpack } from "@blockly/workspace-backpack";
 import { WorkspaceSearch } from "@blockly/plugin-workspace-search";
 import theme from "@blockly/theme-dark";
 import customBlockBuilderTheme from "@blockly/theme-dark";
-import Load from "../backpack-save-load.js";
+//import Load from "../backpack-save-load.js";
 import localforage from "localforage";
 export default {
   name: "BlocklyComponent",
@@ -2088,7 +2088,7 @@ Author: <input type="text" id="EmbedAuthor"> PFP: <input type="text" id="EmbedAu
       weight: 100,
     });
 
-    const defaultOptions = {
+    /*const defaultOptions = {
       contextMenu: {
         emptyBackpack: true,
         removeFromBackpack: true,
@@ -2097,17 +2097,17 @@ Author: <input type="text" id="EmbedAuthor"> PFP: <input type="text" id="EmbedAu
         pasteAllToBackpack: true,
         disablePreconditionChecks: true,
       },
-    };
+    };*/
     const workspaceSearch = new WorkspaceSearch(workspace);
     workspaceSearch.init();
     workspaceSearch.close();
 
-    const backpack = new Backpack(workspace, defaultOptions);
+    /*const backpack = new Backpack(workspace, defaultOptions);
     backpack.init();
     Load(backpack);
     this.$store.commit("setWorkspace", {
       workspace,
-    });
+    });*/
     workspace.addChangeListener(Blockly.Events.disableOrphans);
     this.$nextTick(() => {
       window.setInterval(() => {
