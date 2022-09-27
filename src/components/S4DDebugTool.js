@@ -47,9 +47,11 @@ function runDebugEvents() {
     })
 }
 window.addEventListener('load', () => {
-    if (location.pathname.includes("/debug") || String(process.env.NODE_ENV) == "development") {
+    if (location.pathname.includes("/debu") || String(process.env.NODE_ENV) == "development") {
         window.isInS4DDebugMode = true
         runDebugEvents()
+    } else {
+      window.isInS4DDebugMode = false
     }
 })
 window.openS4DDebugMenu = () => {
