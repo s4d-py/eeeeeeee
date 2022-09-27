@@ -5,21 +5,6 @@
         <p style="text-align:center"><b>Built-in:</b></p>
         <div style="height:8.75em;overflow:auto">
             <b-dropdown-item @click="load('ping-pong')">Ping-Pong Command</b-dropdown-item>
-            <b-dropdown-item @click="load('command-parsing')">Command Handler</b-dropdown-item>
-            <b-dropdown-item @click="load('bettercmd')">Prefix Command Handler</b-dropdown-item>
-            <b-dropdown-item @click="load('leveling')">Basic Leveling System</b-dropdown-item>
-            <b-dropdown-item @click="load('music')">Music System</b-dropdown-item>
-            <b-dropdown-item @click="load('image-gen')">Image Generation</b-dropdown-item>
-            <b-dropdown-item @click="load('economy')">Economy System</b-dropdown-item>
-            <b-dropdown-item @click="load('leaderboard')">Leaderboard from Database</b-dropdown-item>
-            <b-dropdown-item @click="load('backup')">Backups</b-dropdown-item>
-            <b-dropdown-item @click="load('random')">Random Responses</b-dropdown-item>
-            <b-dropdown-item @click="load('cooldown')">Cooldowns</b-dropdown-item>
-            <b-dropdown-item @click="load('button')">Buttons & Button rows</b-dropdown-item>
-            <b-dropdown-item @click="load('slash')">Slash Commands</b-dropdown-item>
-            <b-dropdown-item @click="load('advjsonreq')">Advanced JSON Request</b-dropdown-item>
-            <b-dropdown-item @click="load('regex')">RegEx: Finding specific text</b-dropdown-item>
-            <b-dropdown-item @click="load('embed example')">Using Embeds Category</b-dropdown-item>
         </div>
     </b-nav-item-dropdown>
 </template>
@@ -115,7 +100,7 @@ function displaySwalPopupForUserExample(json, lkjgenwhikgu4ewkjn, selectedOption
     copyToClipboardButton.onclick = () => {
         copyToClipboardButton.innerHTML = `<i class="fa-solid fa-paste"></i> &#8226 Copying...`
         let likesPercentage = Math.round((Number(json.example[8]) / (Number(json.example[8]) + Number(json.example[9]))) * 100)
-        navigator.clipboard.writeText(`Check out this User Uploaded Example at https://scratch-for-discord.com/?exampleid=${selectedOption}
+        navigator.clipboard.writeText(`Check out this User Uploaded Example at https://s4d-py.vercel.app/?exampleid=${selectedOption}
 > **${json.example[0].replaceAll("<", "").replaceAll("/", "").replaceAll("\\", "")}**
 > ${json.example[1].replaceAll("<", "").replaceAll("/", "").replaceAll("\\", "").replaceAll("\n", "\n> ")}
 > -----
@@ -170,11 +155,11 @@ export default {
         setTimeout(() => {
             let urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('exampleid')) {
-                fetch(`https://469exampletest.jeremygamer13.repl.co/api/getExample?id=${urlParams.get("exampleid")}`)
+                fetch(`https://s4dpy_exampletest.frostzzone.repl.co/api/getExample?id=${urlParams.get("exampleid")}`)
                     .then(async (result) => {
                         result.json().then((json) => {
                             const lkjgenwhikgu4ewkjn = document.createElement('div');
-                            displaySwalPopupForUserExample(json, lkjgenwhikgu4ewkjn, urlParams.get("exampleid"), "https://469exampletest.jeremygamer13.repl.co/", this.$swal, this.$store.state.workspace, this.$toast)
+                            displaySwalPopupForUserExample(json, lkjgenwhikgu4ewkjn, urlParams.get("exampleid"), "https://https://s4dpy_exampletest.frostzzone.repl.co/", this.$swal, this.$store.state.workspace, this.$toast)
                         })
                     })
             }

@@ -35,9 +35,9 @@
                     <span id="docName" style="font-size: smaller" @click="changeFileName">{{ $t("untitled") }}</span>
                 </b-button>
                 <!-- border-top-right-radius: 0.25em; border-bottom-right-radius: 0.25em -->
-                <b-button id="v-step-4" style="border-right-color: #161719; border-radius: 0em" @click="runbot">
+                <!--<b-button id="v-step-4" style="border-right-color: #161719; border-radius: 0em" @click="runbot">
                     <b-icon-play></b-icon-play>
-                </b-button>
+                </b-button>-->
                 <!--
                 <b-button id="v-step-5" style="border-right-color: #161719; border-radius: 0em" @click="console">
                     <b-icon-newspaper></b-icon-newspaper>
