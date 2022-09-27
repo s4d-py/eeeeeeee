@@ -27,47 +27,12 @@
 <script>
 import Blockly from "blockly";
 
-import PingPongExample from "../../examples/ping-pong";
-import CommandParsingExample from "../../examples/command-parsing";
-import bettercmd from "../../examples/bettercmd";
-import LevelingExample from "../../examples/leveling";
-import MusicExample from "../../examples/music";
-import ImageGen from "../../examples/image_gen";
-import Economy from "../../examples/economy";
-import backup from "../../examples/backup";
-import random from "../../examples/random";
-import aki from "../../examples/aki";
-import reddit from "../../examples/reddit";
-import ticket from "../../examples/ticket";
-import button from "../../examples/button";
-import cooldown from "../../examples/cooldown";
-import slash from "../../examples/slash";
-import advjsonreq from "../../examples/advjsonreq.js";
-import regex from "../../examples/regex.js";
-import leaderboard from "../../examples/leaderboard.js";
-import embed from "../../examples/embed example.js";
 import localforage from 'localforage';
+
+import PingPongExample from "../../examples/ping-pong";
 
 const examples = {
     "ping-pong": PingPongExample,
-    "command-parsing": CommandParsingExample,
-    "bettercmd": bettercmd,
-    "leveling": LevelingExample,
-    "music": MusicExample,
-    "image-gen": ImageGen,
-    "economy": Economy,
-    "backup": backup,
-    "random": random,
-    "aki": aki,
-    "reddit": reddit,
-    "ticket": ticket,
-    "button": button,
-    "cooldown": cooldown,
-    "slash": slash,
-    "advjsonreq": advjsonreq,
-    "regex": regex,
-    "leaderboard": leaderboard,
-    "embed example": embed
 };
 
 function displaySwalPopupForUserExample(json, lkjgenwhikgu4ewkjn, selectedOption, SERVER, swal, workspace, toast) {
@@ -255,9 +220,9 @@ export default {
         },
         userexamples() {
             const workspace = this.$store.state.workspace
-            let url = "https://469exampletest.jeremygamer13.repl.co/"
+            let url = "https://s4dpyexamplestest.frostzzone.repl.co/"
             if (window.isInS4DDebugMode) {
-                url = prompt("Examples server URL to use?", "https://469exampletest.jeremygamer13.repl.co/")
+                url = prompt("Examples server URL to use?", "https://s4dpyexamplestest.frostzzone.repl.co/")
                 if (!url.endsWith("/")) url += "/"
             }
             const SERVER = url

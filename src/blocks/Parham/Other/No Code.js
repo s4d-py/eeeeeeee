@@ -15,8 +15,8 @@ const blockData = {
   ],
   "previousStatement": null,
   "nextStatement": null,
-  "colour": "#D14081",
-  "tooltip": "The Blocks You Put On This Block Will Not Exported In Code",
+  "colour": 0,
+  "tooltip": "No Code",
   "helpUrl": ""
 };
 
@@ -26,8 +26,8 @@ Blockly.Blocks[blockName] = {
     }
 };
 
-Blockly.JavaScript[blockName] = function() {
-  // TODO: Assemble JavaScript into code variable.
+Blockly.Python[blockName] = function() {
+  // TODO: Assemble Python into code variable.
   var code = '';
   return code;
 };

@@ -108,7 +108,7 @@ export default {
             if (document.querySelector("#docName").textContent == "") {
                 document.querySelector("#docName").textContent = "Untitled document"
             }
-            document.title = `Scratch For Discord 469 - ${document.querySelector("#docName").textContent}`;
+            document.title = `Scratch For Discord PY - ${document.querySelector("#docName").textContent}`;
         }, false);
         const element = document.querySelector("#docName");
         element.spellcheck = false;
@@ -221,80 +221,17 @@ export default {
                     const xmlContent = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(this.$store.state.workspace));
                     const fileName = `${encodeURIComponent(document.querySelector("#docName").textContent).replace(/%20/g, " ")}.zip`;
                     zip.file("blocks.xml", xmlContent);
-                    const javascriptContent = this.getWorkspaceCode();
-                    if (javascriptContent.includes("queue.join") && javascriptContent.includes("queue.connect")) {
-                        swal.fire("Sorry, but Retro and Jose music blocks do not work together.")
-                        return;
-                    }/*
-                    if (String(javascriptContent).includes("let serverjs = ")) {
-                        zip.file("server.js", `
-const express = require('express');
-const server = express();
-server.all('/', (req, res)=>{
-    res.send('Your bot is alive!')
-})
-function keepAlive(){
-    server.listen(3000, ()=>{console.log("Server is Ready!")});
-}
-keepAlive()`);
-                        zip.file("boot.js", `const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-async function load(){
-console.log(\`
-entering BIOS please wait....\`)
-console.clear()
-console.log(\`
-██████╗░░█████╗░░█████╗░████████╗██╗███╗░░██╗░██████╗░░░░░░░░░░
-██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██║████╗░██║██╔════╝░░░░░░░░░░
-██████╦╝██║░░██║██║░░██║░░░██║░░░██║██╔██╗██║██║░░██╗░░░░░░░░░░
-██╔══██╗██║░░██║██║░░██║░░░██║░░░██║██║╚████║██║░░╚██╗░░░░░░░░░
-██████╦╝╚█████╔╝╚█████╔╝░░░██║░░░██║██║░╚███║╚██████╔╝██╗██╗██╗
-╚═════╝░░╚════╝░░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝╚═╝╚═╝\`)
-console.log(\`Code Loaded!\`)
-require("./bot")
-require("./server")
-}
-load()`);
-                    } else {
-                    zip.file("boot.js", `const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-async function load(){
-console.log(\`
-entering BIOS please wait....\`)
-console.clear()
-console.log(\`
-██████╗░░█████╗░░█████╗░████████╗██╗███╗░░██╗░██████╗░░░░░░░░░░
-██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██║████╗░██║██╔════╝░░░░░░░░░░
-██████╦╝██║░░██║██║░░██║░░░██║░░░██║██╔██╗██║██║░░██╗░░░░░░░░░░
-██╔══██╗██║░░██║██║░░██║░░░██║░░░██║██║╚████║██║░░╚██╗░░░░░░░░░
-██████╦╝╚█████╔╝╚█████╔╝░░░██║░░░██║██║░╚███║╚██████╔╝██╗██╗██╗
-╚═════╝░░╚════╝░░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝╚═╝╚═╝\`)
-console.log(\`Code Loaded!\`)
-require("./bot")
-}
-load()`);
-                    }*/
-                    zip.file("index.js", javascriptContent);
-                    /*
-                    zip.file(".replit", 'run = "npm start"');
-                  zip.file("database.json", "{}");
-                  */
-                    zip.file("package.json", `{\n
-                        "name": "scratch-for-discord-bot",\n
-                        "version": "1.0.0",\n
-                        "main": "index.js",\n
-                        "scripts": {\n
-                            "start": "npm i && node .",\n
-                            "node-update": "npm i --save-dev node@17 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH",\n
-                            "node-clean": "rm -rf node_modules && rm package-lock.json && npm cache clear --force && npm cache clean --force && npm i"\n
-                        },\n
-                        "dependencies": {\n
-                            "moment": "latest",\n
-                            ${requireUsed}\n
-                            
-                        },\n
-                        "devDependencies": {\n
-                            "node": "^17"\n
-                        }\n
-                    }`)
+                    const pythonContent = this.getWorkspaceCode();
+
+                    zip.file("bot.py", pythonContent);
+                  zip.file("pyproject.toml", `[tool.poetry]
+name = "scratch-for-discord-py-bot"
+version = "1.0.0"
+description = "A bot make in scratch for discord py"
+authors = ["s4d-py"]
+
+[tool.poetry.dependencies]
+${requires.join("\n")}`)
                     zip.generateAsync({
                         type: "blob"
                     })

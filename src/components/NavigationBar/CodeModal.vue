@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import beautify from "js-beautify";
+// import beautify from "js-beautify";
 
 // https://filehost.jeremygamer13.repl.co/s4d/prism/js
 // https://filehost.jeremygamer13.repl.co/s4d/prism/css
@@ -16,18 +16,12 @@ export default {
     name: "editmenu",
     computed: {
         content: function(){
-            return beautify.js(this.getWorkspaceCode(), {
-                indent_size: 4,
-                space_in_empty_paren: true
-            });
+            return this.getWorkspaceCode()
         }
     },
     methods: {
         copy() {
-            var url = beautify.js(this.getWorkspaceCode(), {
-                indent_size: 4,
-                space_in_empty_paren: true
-            });
+            var url = this.getWorkspaceCode()
            navigator.clipboard.writeText(url)
         }
     }
