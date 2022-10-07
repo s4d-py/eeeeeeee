@@ -12,7 +12,7 @@ export const websiteMessages = {
     untitled: "Untitled document",
     help: "Help",
     load: {
-        error: "The uploaded file was corrupted and cannot be loaded by Scratch For Discord...",
+        error: "The uploaded file was corrupted and cannot be loaded by Scratch For Discord PY...",
     },
     token:{
         title:"Token Database",
@@ -41,9 +41,9 @@ export const websiteMessages = {
         }
     },
     file: {
-        copy:"Copy Javascript Code",
+        copy:"Copy Python Code",
         title: "File",
-        javascript: "Export to Javascript",
+        javascript: "Export to Python",
         open: "Open a file...",
       confirm: {
             title: "Delete current blocks?",
@@ -133,7 +133,7 @@ export const websiteMessages = {
         here: "here",
     },
     code_modal: {
-        title: "JavaScript code of your bot",
+        title: "Python code of your bot",
     },
     autosave:{
         cancell:"Cancel",

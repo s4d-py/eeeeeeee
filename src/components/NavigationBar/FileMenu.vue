@@ -6,7 +6,7 @@
       @change="load"
       id="load-code"
       type="file"
-      accept=".s4d,.zip,.xml"
+      accept=".s4dpy,.zip,.xml"
     />
     <b-dropdown-item v-b-modal.code-modal>{{
       $t("file.javascript")
@@ -278,7 +278,7 @@ export default {
       );
       const fileName = `${encodeURIComponent(
         document.querySelector("#docName").textContent
-      ).replace(/%20/g, " ")}.s4d`;
+      ).replace(/%20/g, " ")}.s4dpy`;
       zip.file("blocks.xml", xmlContent);
       if (window.saveCustomBlocksOutput.length > 0) {
         zip.file(
@@ -335,7 +335,7 @@ export default {
             types: [
               {
                 description: "S4D Bot File",
-                accept: { "application/zip": [".s4d"] },
+                accept: { "application/zip": [".s4dpy"] },
               },
             ],
           });

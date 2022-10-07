@@ -5,6 +5,7 @@ import store from './store';
 import VueSwal from 'vue-swal';
 import Vuei18n from 'vue-i18n';
 import Blockly from "blockly";
+import BlocklyPy from "blockly/python";
 import VueToast from 'vue-toast-notification';
 import VueTour from 'vue-tour';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -134,7 +135,7 @@ Vue.mixin({
             let requires2 = []
             let intents = []
             let xml = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(workspace))
-            r(requires2, intents, Blockly.Python.workspaceToCode(workspace), xml)
+            r(requires2, intents, BlocklyPy.workspaceToCode(workspace), xml)
             setTimeout(async () => {
                 await localforage.setItem("requires", requires)
             }, 1000)

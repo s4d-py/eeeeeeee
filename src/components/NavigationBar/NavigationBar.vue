@@ -2,7 +2,7 @@
     <b-navbar toggleable="lg" type="dark" style="background-color:#161719;user-select:none;" id="navbar nav-main">
         <b-navbar-brand style="font-size: 120%;">
             <button id="hideAllGuiElements" class="hide-gui-button"><img :src="decideNavBarImage" width="35" draggable="false" id="navigationBarS4DImage"></button>
-            Scratch For Discord
+            Scratch For Discord PY
         </b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -209,7 +209,7 @@ export default {
                     confirm: "Download"
                 },
             }).then(async result => {
-                let requires = [`"discord.js": "^13.7.0",`,`"process":"^0.11.10",`,`"easy-json-database": "^1.5.0",`]
+                let requires = [`python = "^3.8"`,`disnake 2.5.0`]
                 let oldrequires = await localforage.getItem("requires")
                 r(requires,oldrequires)
                 var requireUsed = requires.join("\n")
@@ -333,19 +333,19 @@ ${requires.join("\n")}`)
             </ul>
             
   <input type="checkbox" id="file1" checked="checked">
-  <label for="file1"> index.js </label>
+  <label for="file1"> bot.py </label>
   <input type="checkbox" id="file2">
-  <label for="file2"> package.json </label>
+  <label for="file2"> pyproject.toml </label>
   <input type="checkbox" id="file3">
   <label for="file3"> blocks.xml</label><!--<br>
-  <input type="checkbox" id="file4">
-  <label for="file4"> .replit </label>
+  <input type="checkbox" id="file4">`
+  /*<label for="file4"> .replit </label>
   <input type="checkbox" id="file5">
   <label for="file5"> database.json </label>
   <input type="checkbox" id="file6">
   <label for="file6"> boot.js</label><br><br>
   <input type="checkbox" id="ZIP">
-  <label for="ZIP"> ZIP Files</label>-->`;
+  <label for="ZIP"> ZIP Files</label>-->*/;
                         //     zip.file(".replit", 'run = "npm start"');
                         //   zip.file("database.json", "{}");
                         this.$swal({
@@ -355,8 +355,8 @@ ${requires.join("\n")}`)
                             buttons: {
                                 cancel: "Nevermind...",
                                 confirm: "Download"
-                                //     file1: "bot.js",
-                                //     file2: "package.json",
+                                //     file1: "bot.py",
+                                //     file2: "pyproject.toml",
                                 //     file3: "blocks.xml",
                                 //     file4: ".replit",
                                 //     file5: "database.json",
@@ -382,14 +382,14 @@ ${requires.join("\n")}`)
                                 if (file1) {
                                     console.log("barry: hey can you go grab their code")
                                     console.log("johnathan: ok")
-                                    const javascriptContent = this.getWorkspaceCode();
-                                    const blob = new Blob([javascriptContent])
+                                    const pyContent = this.getWorkspaceCode();
+                                    const blob = new Blob([pyContent])
                                     const a = document.createElement("a");
                                     a.style = "display: none";
                                     document.body.appendChild(a);
                                     const url = window.URL.createObjectURL(blob);
                                     a.href = url;
-                                    a.download = "index.js";
+                                    a.download = "bot.py";
                                     a.click();
                                     window.URL.revokeObjectURL(url);
                                     document.body.removeChild(a);
@@ -398,38 +398,28 @@ ${requires.join("\n")}`)
                                 if ((file2)) {
                                     console.log("johnathan: hey can you grab the packages")
                                     console.log("barry: on it")
-                                    let requires = [`"discord.js": "^13.7.0",`, `"process":"^0.11.10",`, `"easy-json-database": "^1.5.0",`]
+                                    let requires = [`python = "^3.8"`,`disnake 2.5.0`]
                                     let oldrequires = await localforage.getItem("requires")
                                     r(requires, oldrequires)
                                     var requireUsed = requires.join("\n")
                                     if ((requireUsed.charAt(requireUsed.length - 1)) == ",") {
                                         requireUsed = requireUsed.substring(0, (requireUsed.length - 1))
                                     }
-                                    const javascriptContent = `{\n
-                        "name": "scratch-for-discord-bot",\n
-                        "version": "1.0.0",\n
-                        "main": "index.js",\n
-                        "scripts": {\n
-                            "start": "npm i && node .",\n
-                            "node-update": "npm i --save-dev node@17 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH",\n
-                            "node-clean": "rm -rf node_modules && rm package-lock.json && npm cache clear --force && npm cache clean --force && npm i"\n
-                        },\n
-                        "dependencies": {\n
-                            "moment": "latest",\n
-                            ${requireUsed}\n
-                            
-                        },\n
-                        "devDependencies": {\n
-                            "node": "^17"\n
-                        }\n
-                    }`;
-                                    const blob = new Blob([javascriptContent])
+                                    const pyContent = `[tool.poetry]
+name = "scratch-for-discord-py-bot"
+version = "1.0.0"
+description = "A bot make in scratch for discord py"
+authors = ["s4d-py"]
+
+[tool.poetry.dependencies]
+${requires.join("\n")}`;
+                                    const blob = new Blob([pyContent])
                                     const a = document.createElement("a");
                                     a.style = "display: none";
                                     document.body.appendChild(a);
                                     const url = window.URL.createObjectURL(blob);
                                     a.href = url;
-                                    a.download = "package.json";
+                                    a.download = "pyproject.toml";
                                     a.click();
                                     window.URL.revokeObjectURL(url);
                                     document.body.removeChild(a);
